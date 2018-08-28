@@ -83,11 +83,15 @@ public class CalcTotal {
             if (tokens.length >= 2) {
                 int tf = Integer.parseInt(tokens[1]);
                 String[] ss = tokens[0].split("_");
-                double w = tf * Math.log(countMap.get("count") / dfMap.get(ss[0]));
+                double w = tf * Math.log((double)countMap.get("count") / dfMap.get(ss[0]));
                 NumberFormat numberFormat = NumberFormat.getNumberInstance();
                 numberFormat.setMaximumFractionDigits(5);
                 k.set(ss[1]);
                 v.set(ss[0] + ":" + w);
+                
+                if(ss[0].equals("豆浆")){
+                    System.out.println(1);
+                }
                 context.write(k, v);
             }
         }

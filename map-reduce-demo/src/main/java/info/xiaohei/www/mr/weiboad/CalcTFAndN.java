@@ -47,8 +47,11 @@ public class CalcTFAndN {
             TokenStream tokenStream = analyzer.tokenStream("", new StringReader(tokens[1]));
             while (tokenStream.incrementToken()) {
                 CharTermAttribute attribute = tokenStream.getAttribute(CharTermAttribute.class);
-                k.set(attribute.toString() + "_" + tokens[0]);
-                context.write(k, v);
+                String word = attribute.toString();
+                if(word.equals("豆浆") || word.equals("机器人") || word.equals("内存")){
+                    k.set(word + "_" + tokens[0]);
+                    context.write(k, v);
+                }
             }
             //计算N
             k.set("count");
