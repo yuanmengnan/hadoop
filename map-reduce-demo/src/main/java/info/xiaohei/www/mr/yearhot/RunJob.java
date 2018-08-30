@@ -15,7 +15,6 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.partition.HashPartitioner;
 
 /**
  * 
@@ -61,6 +60,7 @@ public class RunJob {
     static class HotReduce extends Reducer<KeyPair, Text, KeyPair, Text> {
         protected void reduce(KeyPair kp, Iterable<Text> value, Context context)
                 throws IOException, InterruptedException {
+            System.out.println(kp.toString());
             for (Text v : value)
                 context.write(kp, v);
         }
@@ -77,8 +77,8 @@ public class RunJob {
             job.setMapOutputKeyClass(KeyPair.class);
             job.setMapOutputValueClass(Text.class);
 
-            job.setNumReduceTasks(6);   // reduce数量:默认1
-            job.setPartitionerClass(HashPartitioner.class);    //HashPartitioner<K, V>
+            job.setNumReduceTasks(5);   // reduce数量:默认1
+            job.setPartitionerClass(FirstPartition.class);    //HashPartitioner<K, V>
             job.setSortComparatorClass(SortHot.class);
             job.setGroupingComparatorClass(GroupHot.class);
 
@@ -91,7 +91,6 @@ public class RunJob {
             if (fs.exists(outPath)) {
                 fs.delete(outPath, true);
             }
-            
             
             System.exit(job.waitForCompletion(true) ? 0 : 1);
         } catch (Exception e) {
