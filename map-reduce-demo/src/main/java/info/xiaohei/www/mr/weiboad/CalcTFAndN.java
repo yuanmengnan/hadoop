@@ -85,7 +85,7 @@ public class CalcTFAndN {
         @Override
         public int getPartition(Text key, IntWritable value, int numReduceTasks) {
             if (key.equals(new Text("count"))) {
-                return 1;
+                return numReduceTasks-1;
             } else {
                 //其余使用默认的分区方式,此时传递的分区数应该-1
                 return super.getPartition(key, value, numReduceTasks - 1);

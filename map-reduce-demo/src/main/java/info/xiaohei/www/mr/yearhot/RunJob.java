@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -28,7 +30,12 @@ public class RunJob {
     public static SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     static class HotMapper extends Mapper<LongWritable, Text, KeyPair, Text> {
+        Map<Long, String> map = new HashMap<Long, String>();
+        
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+            map.put(key.get(), value.toString());
+            System.out.println(Thread.currentThread() + "单步map:" + map.toString());
+            
             String line = value.toString();
             System.out.println("line=" + line);
             System.out.println("℃");
@@ -58,8 +65,12 @@ public class RunJob {
     }
 
     static class HotReduce extends Reducer<KeyPair, Text, KeyPair, Text> {
+        Map<KeyPair, Iterable<Text>> map = new HashMap<KeyPair, Iterable<Text>>();
+        
         protected void reduce(KeyPair kp, Iterable<Text> value, Context context)
                 throws IOException, InterruptedException {
+            map.put(kp, value);
+            System.out.println(Thread.currentThread() + "单步reduce:" + map.toString());
             System.out.println(kp.toString());
             for (Text v : value)
                 context.write(kp, v);
