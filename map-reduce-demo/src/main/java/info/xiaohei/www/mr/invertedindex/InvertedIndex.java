@@ -77,7 +77,7 @@ public class InvertedIndex {
                 throws java.io.IOException, InterruptedException {
             String res = "";
             for (Text text : values) {
-                res += text.toString() + "\r";
+                res += text.toString();// + "\r";
             }
             v.set(res);
             context.write(key, v);
