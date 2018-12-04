@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hbase_config>
+    <zookeeper>
+        <property>
+            <clientPort>
+                2181
+            </clientPort>
+        </property>
+        <quorum>
+            hadoop-1,hadoop-2,hadoop-3
+        </quorum>
+    </zookeeper>
+    <master>
+        hadoop-1:60010
+    </master>
+</hbase_config>
