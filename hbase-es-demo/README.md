@@ -6,7 +6,8 @@ elasticsearch + hbase海量数据查询,支持千万数据秒回查询
 1、hbase中创建表：hbase> create 'doc','cf'
 2、es中不用预先创建索引，type，程序会自动生成, 则使用默认的分词索引。
    也可以先在 es中创建索引指定mapping(title则不进行分词，只能进行term精确查询), 如:
- ···  {
+```  
+{
   "mappings": {
     "doc2": {
       "properties": {
@@ -27,7 +28,7 @@ elasticsearch + hbase海量数据查询,支持千万数据秒回查询
     }
   }
 }
-···
+```
 
 一、ElasticSearch和Hbase
 ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。 Elasticsearch的性能是solr的50倍。
