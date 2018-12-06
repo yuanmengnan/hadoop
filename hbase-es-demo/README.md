@@ -54,6 +54,7 @@ c)       Network.Host: 192.168.44.137  这里不能写127.0.0.1
 3.     解压安装kibana
 4.     再congfig目录下的kibana.yml中修改elasticsearch.url
 5.     安装插件
+```  
 Step 1: Install Marvel into Elasticsearch:
 bin/plugin install license
 bin/plugin install marvel-agent
@@ -62,7 +63,7 @@ bin/kibana plugin --install elasticsearch/marvel/latest
 Step 3: Start Elasticsearch and Kibana
 bin/elasticsearch
 bin/kibana
- 
+```  
 
 启动好elasticsearch集群后，
 然后启动zookeeper、hdfs、hbase。zkService.sh start  、start-all.sh、start-hbase.sh。
@@ -73,6 +74,7 @@ bin/kibana
 三、编码开发
 1、首先在IntelliJ IDEA中新建一个maven工程，加入如下依赖。
 [html] view plain copy print?
+```  
 <dependencies>  
         <dependency>  
             <groupId>junit</groupId>  
@@ -158,6 +160,7 @@ bin/kibana
   
   
     </dependencies>  
+```  
 
 2、Dao层
 [java] view plain copy print?
@@ -178,7 +181,7 @@ private String author;  
 
 
 4、在hbase中建立表。表名师doc，列族是cf。
-
+```  
 public static void main(String[] args) throws Exception {
       HbaseUtils hbase = new HbaseUtils();
       //创建一张表
@@ -237,7 +240,7 @@ public void createTable(String tableName, String column) throws Exception {
           }  
       }  
   }  
-
+```  
 数据导入成功之后可以在服务器上通过命令查看一下：
 curl -XGET http://node1:9200/tfjt/_search
 
@@ -245,7 +248,7 @@ curl -XGET http://node1:9200/tfjt/_search
 
 7、搜索。
 在这里新建了一个工具类Esutil.java,主要用于处理搜索的。注意，我们默认的elasticsearch是9200端口的，这里数据传输用的是9300，不要写成9200了，然后就是集群名字为tf，也就是前面配置的集群名。还有就是主机名node1-node3,这里不能写ip地址，如果是本地测试的话，你需要在你的window下面配置hosts文件。
-
+```  
 [java] view plain copy print?
 public class Esutil {  
     public static Client client = null;  
@@ -343,11 +346,12 @@ public class Esutil {  
 //      List<Map<String, Object>> list = (List<Map<String, Object>>) search.get("dataList");  
 //  }  
 }  
-
+```  
 
 8、使用spring控制层处理
 在里面的spring配置这里就不说了，代码文末提供。
 [java] view plain copy print?
+```  
 @RequestMapping("/search.do")  
 public String serachArticle(Model model,  
         @RequestParam(value="keyWords",required = false) String keyWords,  
@@ -376,11 +380,12 @@ public String serachArticle(Model model,  
     model.addAttribute("kw",keyWords);  
     return "index.jsp";  
 }  
-
+```  
 
 9、页面
 
 [java] view plain copy print?
+```  
 <center>  
 <form action="search.do" method="get">  
   <input type="text" name="keyWords" />  
@@ -410,6 +415,7 @@ public String serachArticle(Model model,  
 </c:if>  
 </c:if>  
 </center>  
+```  
 
 10、项目发布
 在IntelliJ IDEA 中配置好常用的项目，这里发布名Application context名字为es，当然你也可以自定义设置。
