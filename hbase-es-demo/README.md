@@ -2,9 +2,13 @@ elasticsearch + hbase海量数据查询,支持千万数据秒回查询
 
 # 思路-YD：
 将基本数据存到es， 将文章内容存到hbase
+
 准备：
-1、hbase中创建表：hbase> create 'doc','cf'
-2、es中不用预先创建索引，type，程序会自动生成, 则使用默认的分词索引。
+
+1、hbase中创建表：hbase> create 'doc','cf' 
+
+2、es中不用预先创建索引，type，程序会自动生成, 则使用默认的分词索引.  
+
    也可以先在 es中创建索引指定mapping(title则不进行分词，只能进行term精确查询), 如:
 ```  
 {
@@ -65,11 +69,9 @@ bin/elasticsearch
 bin/kibana
 ```  
 
-启动好elasticsearch集群后，
-然后启动zookeeper、hdfs、hbase。zkService.sh start  、start-all.sh、start-hbase.sh。
-接下来就是剩下编码步骤了。
-
-
+启动好elasticsearch集群后，  
+然后启动zookeeper、hdfs、hbase。zkService.sh start  、start-all.sh、start-hbase.sh。  
+接下来就是剩下编码步骤了。  
 
 三、编码开发
 1、首先在IntelliJ IDEA中新建一个maven工程，加入如下依赖。
