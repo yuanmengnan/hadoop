@@ -1,12 +1,6 @@
-# es
-
-https://github.com/sdksdk0/Elasticsearch-Hbase
-
 elasticsearch + hbase海量数据查询,支持千万数据秒回查询
 
-博客地址：http://blog.csdn.net/sdksdk0/article/details/53966430
-
-思路-YD：
+# 思路-YD：
 将基本数据存到es， 将文章内容存到hbase
 准备：
 1、hbase中创建表：hbase> create 'doc','cf'
