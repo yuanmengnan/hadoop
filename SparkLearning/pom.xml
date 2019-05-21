@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.apache.spark</groupId>
+    <artifactId>SparkLearning</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>SparkLearning1</module>
+        <module>SparkLearning2.1</module>
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <scala.version>2.10.4</scala.version>
+        <scala.binary.version>2.10</scala.binary.version>
+        <adam.version>0.18.2</adam.version>
+        <spark1.version>1.5.2</spark1.version>
+        <CodeCacheSize>512m</CodeCacheSize>
+    </properties>
+
+    <!--<dependencies>-->
+        <!--<dependency>-->
+            <!--<groupId>org.scala-lang</groupId>-->
+            <!--<artifactId>scala-compiler</artifactId>-->
+            <!--<version>${scala.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.scala-lang</groupId>-->
+            <!--<artifactId>scala-reflect</artifactId>-->
+            <!--<version>${scala.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.scala-lang</groupId>-->
+            <!--<artifactId>scala-library</artifactId>-->
+            <!--<version>${scala.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.scala-lang</groupId>-->
+            <!--<artifactId>scala-actors</artifactId>-->
+            <!--<version>${scala.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.github.scopt</groupId>-->
+            <!--<artifactId>scopt_${scala.binary.version}</artifactId>-->
+            <!--<version>3.2.0</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.scalanlp</groupId>-->
+            <!--<artifactId>breeze_${scala.binary.version}</artifactId>-->
+            <!--<version>0.11.2</version>-->
+            <!--<exclusions>-->
+                <!--&lt;!&ndash; This is included as a compile-scoped dependency by jtransforms, which is-->
+                     <!--a dependency of breeze. &ndash;&gt;-->
+                <!--<exclusion>-->
+                    <!--<groupId>junit</groupId>-->
+                    <!--<artifactId>junit</artifactId>-->
+                <!--</exclusion>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.apache.commons</groupId>-->
+                    <!--<artifactId>commons-math3</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.scalatest</groupId>-->
+            <!--<artifactId>scalatest_2.10</artifactId>-->
+            <!--<version>2.2.5</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.bdgenomics.adam/adam-core_2.10 &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.bdgenomics.adam</groupId>-->
+            <!--<artifactId>adam-core_2.10</artifactId>-->
+            <!--<version>${adam.version}</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.bdgenomics.adam/adam-cli_2.10 &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.bdgenomics.adam</groupId>-->
+            <!--<artifactId>adam-cli_2.10</artifactId>-->
+            <!--<version>${adam.version}</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.bdgenomics.adam/adam-apis_2.10 &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.bdgenomics.adam</groupId>-->
+            <!--<artifactId>adam-apis_2.10</artifactId>-->
+            <!--<version>${adam.version}</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/com.databricks/spark-avro_2.10 &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>com.databricks</groupId>-->
+            <!--<artifactId>spark-avro_2.10</artifactId>-->
+            <!--<version>2.0.1</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/com.databricks/spark-csv_2.10 &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>com.databricks</groupId>-->
+            <!--<artifactId>spark-csv_2.10</artifactId>-->
+            <!--<version>1.4.0</version>-->
+        <!--</dependency>-->
+
+        <!--&lt;!&ndash; http://mvnrepository.com/artifact/org.apache.spark/spark-mllib_2.10 &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.spark</groupId>-->
+            <!--<artifactId>spark-mllib_2.10</artifactId>-->
+            <!--<version>${spark1.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.spark</groupId>-->
+            <!--<artifactId>spark-mllib_2.10</artifactId>-->
+            <!--<version>${spark1.version}</version>-->
+            <!--<type>test-jar</type>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.spark</groupId>-->
+            <!--<artifactId>spark-streaming_2.10</artifactId>-->
+            <!--<version>${spark1.version}</version>-->
+            <!--<type>test-jar</type>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.spark</groupId>-->
+            <!--<artifactId>spark-core_2.10</artifactId>-->
+            <!--<version>${spark1.version}</version>-->
+            <!--<type>test-jar</type>-->
+        <!--</dependency>-->
+
+
+        <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+        <!--&lt;!&ndash;<groupId>org.bdgenomics.utils</groupId>&ndash;&gt;-->
+        <!--&lt;!&ndash;<artifactId>utils-misc_2.10</artifactId>&ndash;&gt;-->
+        <!--&lt;!&ndash;<version>0.2.7</version>&ndash;&gt;-->
+        <!--&lt;!&ndash;<type>test-jar</type>&ndash;&gt;-->
+        <!--&lt;!&ndash;<scope>test</scope>&ndash;&gt;-->
+        <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+    <!--&lt;!&ndash;</dependencies>&ndash;&gt;-->
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <skipMain>true</skipMain> <!-- skip compile -->
+                        <skip>true</skip> <!-- skip testCompile -->
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
